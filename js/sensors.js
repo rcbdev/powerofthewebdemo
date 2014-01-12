@@ -6,6 +6,7 @@ $(function () {
     $orientation = $('#orientation'),
     showPosition = function (position) {
         $location.text('Lat: ' + position.coords.latitude + ', Lon: ' + position.coords.longitude);
+        map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
     },
     errorPosition = function (e) {
         $location.text('Error: ' + e);
@@ -65,4 +66,11 @@ $(function () {
         $orientation.text('Orientation not supported');
         $rotation1.text('Rotation not supported');
     }
+
+    var mapOptions = {
+        center: new google.maps.LatLng(-34.397, 150.644),
+        zoom: 8
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
 });
